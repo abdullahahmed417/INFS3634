@@ -14,25 +14,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        configureQuiz1Button();
+        configureQuizzesButton();
     }
 
-    private void configureQuiz1Button() {
+    private void configureQuizzesButton() {
         quiz1Button = findViewById(R.id.button);
         quiz1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(sendQuizNo()));
+                startActivity(new Intent(MainActivity.this, quizRecyclerView.class));
             }
         });
-    }
-
-    private Intent sendQuizNo() {
-        String quizNoString = quiz1Button.getText().toString().split(" ")[1];
-        int quizNo = Integer.parseInt(quizNoString);
-
-        Intent intent = new Intent(this, Quiz.class);
-        intent.putExtra("QUIZ_NO", quizNo);
-        return intent;
     }
 }
